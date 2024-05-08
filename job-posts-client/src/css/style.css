@@ -1,0 +1,251 @@
+/* Space system
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+- Font sizes (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98 
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Barlow', sans-serif;
+}
+
+:root {
+  --main-height: 80vh;
+  --main-white: #f8f9fa;
+  --button-color: #228be6;
+  --text-color: #495057;
+  --padding-corner: 15%;
+}
+
+/* HEADER */
+
+header {
+  background-color: var(--main-white);
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text-color);
+  padding: 24px 0;
+}
+
+header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #212529;
+}
+
+/* LEFT HEADER */
+
+.header-left {
+  display: flex;
+  margin-left: var(--padding-corner);
+
+  align-items: center;
+  gap: 32px;
+}
+
+.header-left-item {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.header-left ul {
+  display: flex;
+  list-style-type: none;
+  gap: 24px;
+}
+
+/* HEADER RIGHT */
+
+.header-right {
+  display: flex;
+  margin-right: var(--padding-corner);
+  margin-top: 8px;
+  gap: 8px;
+  align-items: center;
+}
+
+.header-right a {
+  text-decoration: none;
+}
+
+.header-right a:last-child {
+  background-color: var(--button-color);
+  padding: 8px;
+  width: 96px;
+  display: flex;
+  justify-content: center;
+  border-radius: 4px;
+  color: var(--main-white) !important;
+}
+
+.header-right a:link,
+.header-right a:visited {
+  color: var(--text-color);
+}
+
+nav ul li {
+  list-style-type: none;
+}
+
+main {
+  background-image: url('./../images/main-photo.jpg');
+  background-size: cover;
+  height: var(--main-height);
+  color: #fff;
+  padding: 229px 0;
+  padding-left: var(--padding-corner);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+main h1 {
+  font-size: 32px;
+  color: #212529;
+  font-weight: 700;
+}
+
+main .text {
+  font-size: 18px;
+  width: 550px;
+  color: #495057;
+  font-weight: 500;
+}
+
+main a {
+  text-decoration: none;
+}
+
+main a:link,
+main a:visited {
+  color: var(--main-white);
+  background-color: var(--button-color);
+  width: 170px;
+  padding: 11px;
+  margin: 2px;
+  position: absolute;
+  top: 3%;
+  transform: translateX(1%);
+}
+
+.btn-jobs {
+  position: relative;
+  border: 1px solid var(--button-color);
+  width: 180px;
+  height: 48px;
+}
+
+.btn-jobs:hover {
+  border: 2px solid #1864ab;
+  height: 52px;
+}
+
+.job-search {
+  background-color: var(--main-white);
+  height: 16vh;
+}
+
+.search {
+  padding: 50px calc(var(--padding-corner) * 2);
+  display: grid;
+  grid-template-columns: 1fr 50px;
+  align-items: center;
+  column-gap: 8px;
+}
+
+.box-search {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background-color: #dee2e6;
+  padding-left: 8px;
+}
+
+.box-search input {
+  width: 90%;
+  outline: none;
+}
+
+.search input {
+  height: 40px;
+  padding-left: 8px;
+  background-color: #dee2e6;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.search a {
+  text-decoration: none;
+}
+
+.search a:link,
+.search a:visited {
+  background-color: var(--button-color);
+  width: 150px;
+  padding: 10px;
+  color: var(--main-white);
+  display: flex;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+footer {
+  --footer-size: 170px;
+  --footer-color: #adb5bd;
+  background-color: #343a40;
+  height: 48vh;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns:
+    var(--footer-size) var(--footer-size) var(--footer-size)
+    var(--footer-size) 350px;
+}
+
+footer li {
+  list-style-type: none;
+  color: #adb5bd;
+}
+
+footer h2 {
+  color: var(--main-white);
+  margin-bottom: 8px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.info h1 {
+  color: var(--main-white);
+}
+
+.info p {
+  color: var(--footer-color);
+}
+
+.info .socials-media {
+  display: flex;
+  gap: 2px;
+}
+
+.info button {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid #343a40;
+}
+
+.info button:not(:first-child) {
+  margin-left: -10px;
+}
