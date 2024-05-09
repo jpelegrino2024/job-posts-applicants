@@ -5,6 +5,9 @@ const router = express.Router();
 
 router.route('/signUp').post(userController.signUp);
 
-router.route('/:id').get(userController.getUser);
+router
+  .route('/:id')
+  .get(userController.getUser)
+  .patch(userController.updateUser);
 
 module.exports = router;

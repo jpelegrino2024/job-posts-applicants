@@ -6,7 +6,7 @@ exports.getUser = catchAndSync(async (req, res, next) => {
 
   res.status(200).json({
     status: 'success',
-    data: user
+    data: User.mapFieldsToProps(user)
   });
 });
 
@@ -25,5 +25,15 @@ exports.signUp = catchAndSync(async (req, res, next) => {
   res.status(201).json({
     status: 'success',
     data: user
+  });
+});
+
+exports.updateUser = catchAndSync(async (req, res, next) => {
+  const fields = User.mapPropsToFields(req.body);
+  const userUpdated = await User.updateUser(fields, req.params.id);
+
+  res.status(200).json({
+    status: 'success',
+    data: userUpdated
   });
 });
