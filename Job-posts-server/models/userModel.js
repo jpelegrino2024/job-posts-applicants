@@ -53,6 +53,17 @@ exports.getUserById = async (userId) => {
   return user;
 };
 
+exports.getUsers = async () => {
+  try {
+    const [users] = await database.query('SELECT * FROM users');
+
+    return users;
+  } catch (err) {
+    console.error(err);
+    return;
+  }
+};
+
 exports.createUser = async (user) => {
   let userId;
   try {

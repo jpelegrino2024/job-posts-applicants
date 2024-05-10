@@ -5,6 +5,8 @@ const router = express.Router();
 
 router.route('/signUp').post(userController.signUp);
 
+router.route('/').get(userController.getUsers);
+
 router
   .route('/:id')
   .get(userController.getUser)

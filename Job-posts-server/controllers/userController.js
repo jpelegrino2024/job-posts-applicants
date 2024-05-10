@@ -10,6 +10,17 @@ exports.getUser = catchAndSync(async (req, res, next) => {
   });
 });
 
+exports.getUsers = catchAndSync(async (req, res, next) => {
+  const users = await User.getUsers();
+
+  const mapUsers = users.map((user) => User.mapFieldsToProps(user));
+
+  res.status(200).json({
+    status: 'success',
+    data: mapUsers
+  });
+});
+
 exports.signUp = catchAndSync(async (req, res, next) => {
   const userBody = {
     firstName: req.body.firstName,
