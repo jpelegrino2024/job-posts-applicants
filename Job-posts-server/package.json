@@ -8,7 +8,8 @@
     "start": "nodemon server",
     "build:dev": "webpack --config webpack.dev.js --mode development",
     "build:prod": "webpack --config webpack.prod.js --mode production",
-    "start:prod": "nodemon build-dev/main.js --NODE_ENV=production"
+    "start:prod": "nodemon build-prod/main.js --NODE_ENV=production",
+    "build": ""
   },
   "keywords": [],
   "author": "",
