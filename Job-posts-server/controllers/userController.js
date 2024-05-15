@@ -2,22 +2,19 @@ const catchAndSync = require('./../utils/catchAndSync');
 const User = require('./../models/userModel');
 
 exports.getUser = catchAndSync(async (req, res, next) => {
-  const user = await User.getUserById(req.params.id);
-
+  const user = await User.findByPk(req.params.id);
   res.status(200).json({
     status: 'success',
-    data: User.mapFieldsToProps(user)
+    data: user
   });
 });
 
 exports.getUsers = catchAndSync(async (req, res, next) => {
-  const users = await User.getUsers();
-
-  const mapUsers = users.map((user) => User.mapFieldsToProps(user));
+  const users = await User.findAll();
 
   res.status(200).json({
     status: 'success',
-    data: mapUsers
+    data: users
   });
 });
 
@@ -29,9 +26,7 @@ exports.signUp = catchAndSync(async (req, res, next) => {
     password: req.body.password
   };
 
-  const userId = await User.createUser(userBody);
-
-  const user = await User.getUserById(userId);
+  const user = await User.create(userBody);
 
   res.status(201).json({
     status: 'success',
@@ -40,11 +35,13 @@ exports.signUp = catchAndSync(async (req, res, next) => {
 });
 
 exports.updateUser = catchAndSync(async (req, res, next) => {
-  const fields = User.mapPropsToFields(req.body);
-  const userUpdated = await User.updateUser(fields, req.params.id);
+  const userId = req.params.id;
+  await User.update(req.body, { where: { id: userId } });
+
+  const user = await User.findOne({ where: { id: userId } });
 
   res.status(200).json({
     status: 'success',
-    data: userUpdated
+    data: user
   });
 });

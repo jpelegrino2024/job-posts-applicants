@@ -1,13 +1,57 @@
 const mysql = require('mysql2');
+const { Sequelize } = require('sequelize');
 
-const dbPool = mysql
-  .createPool({
-    host: 'job-posts.cub1cwlhadea.us-east-1.rds.amazonaws.com', //process.env.DB_HOST,
-    port: '3306', //process.env.DB_PORT,
-    user: 'admin', //process.env.DB_USER,
-    password: 'pass123456', //process.env.DB_PASSWORD,
-    database: 'job_posts_db' //process.env.DB_DATABASE
-  })
-  .promise();
+let credentials = {
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_DATABASE
+};
 
-module.exports = dbPool;
+// if (process.env.NODE_ENV === 'production') {
+//   credentials = {
+//     ...credentials,
+//     host: 'job-posts.cub1cwlhadea.us-east-1.rds.amazonaws.com',
+//     port: '3306',
+//     user: 'admin',
+//     password: 'pass123456',
+//     database: 'job_posts_db'
+//   };
+// }
+
+// const dbPool = mysql.createPool({ ...credentials }).promise();
+
+const sequelize = new Sequelize(
+  credentials.database,
+  credentials.user,
+  credentials.password,
+  {
+    dialect: 'mysql',
+    host: '127.0.0.1',
+    port: '3361',
+    define: {
+      timestamps: false
+    }
+  }
+);
+
+const dbConnection = async () => {
+  try {
+    await sequelize.authenticate();
+    console.log('Connect successfully');
+  } catch (err) {
+    console.error('Error trying to connect to db', err);
+  }
+};
+
+const testDB = async () => {
+  try {
+    await sequelize.authenticate();
+    console.log('Connect successfully');
+  } catch (err) {
+    console.error('Error trying to connect to db', err);
+  }
+};
+
+module.exports = { sequelize, dbConnection };
