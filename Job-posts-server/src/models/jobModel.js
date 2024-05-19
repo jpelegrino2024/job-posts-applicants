@@ -1,5 +1,5 @@
-const { sequelize } = require('./../database');
-const { DataTypes, Model } = require('sequelize');
+import sequelize from './../database.js';
+import { DataTypes, Model } from 'sequelize';
 
 class JobPost extends Model {}
 JobPost.init(
@@ -28,4 +28,4 @@ JobPost.init(
   }
 );
 
-module.exports = JobPost;
+export default JobPost;

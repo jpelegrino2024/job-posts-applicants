@@ -1,7 +1,4 @@
-const dotenv = require('dotenv');
-dotenv.config({ path: './config.env' });
-
-const app = require('./app');
+import app from './src/app.js';
 
 app.listen(8022, () => {
   console.log('Server has started');

@@ -1,0 +1,28 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/Job-posts-server/node_modules
+/Job-posts-server/.pnp
+/Job-posts-server.pnp.js
+
+# testing
+/Job-posts-server/coverage
+
+# production
+/Job-posts-server/build
+
+# misc
+/Job-posts-server.DS_Store
+/Job-posts-server.env.local
+/Job-posts-server.env.development.local
+/Job-posts-server.env.test.local
+/Job-posts-server.env.production.local
+
+/Job-posts-servernpm-debug.log*
+/Job-posts-serveryarn-debug.log*
+/Job-posts-serveryarn-error.log*
+
+/Job-posts-server/*.env
+/Job-posts-server/build-prod
+
+

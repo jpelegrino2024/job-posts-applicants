@@ -1,7 +1,7 @@
-const catchAndSync = require('./../utils/catchAndSync');
-const User = require('./../models/userModel');
+import catchAndSync from './../utils/catchAndSync.js';
+import User from './../models/userModel.js';
 
-exports.getUser = catchAndSync(async (req, res, next) => {
+export const getUser = catchAndSync(async (req, res, next) => {
   const user = await User.findByPk(req.params.id);
   res.status(200).json({
     status: 'success',
@@ -9,7 +9,7 @@ exports.getUser = catchAndSync(async (req, res, next) => {
   });
 });
 
-exports.getUsers = catchAndSync(async (req, res, next) => {
+export const getUsers = catchAndSync(async (req, res, next) => {
   const users = await User.findAll();
 
   res.status(200).json({
@@ -18,7 +18,7 @@ exports.getUsers = catchAndSync(async (req, res, next) => {
   });
 });
 
-exports.signUp = catchAndSync(async (req, res, next) => {
+export const signUp = catchAndSync(async (req, res, next) => {
   const userBody = {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
@@ -34,7 +34,7 @@ exports.signUp = catchAndSync(async (req, res, next) => {
   });
 });
 
-exports.updateUser = catchAndSync(async (req, res, next) => {
+export const updateUser = catchAndSync(async (req, res, next) => {
   const userId = req.params.id;
   await User.update(req.body, { where: { id: userId } });
 
